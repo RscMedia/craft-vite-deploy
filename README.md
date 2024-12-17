@@ -8,7 +8,6 @@ In technical terms, it’s a self-hosted PHP application backed by a MySQL or Po
 
 __Psst!__ Looking for the Craft source code? Need to file a bug report or feature request? Check out [`craftcms/cms`](https://github.com/craftcms/cms).
 
-
 # This starter is built in with Vite.
 
 To get started clone the repo to your local.
@@ -23,26 +22,29 @@ then run composer:
 
 `composer install`
 
-Then run NPM: 
+Then run NPM:
 
 `npm i`
 
 **Make sure you update the Vite settings in the .env file - using the .env.example.dev as a guide.**
 
-
 ## Create your local database and then run...
 
 `php craft setup`
 
-Add all the details you require: 
+Add all the details you require:
 
 After that has finished run:
 
+`php craft plugin/install vite`
+
+then:
+
 `npm run build`
 
-This will create your first build, creating a vite manifest file so you are ready to rock. 
+This will create your first build, creating a vite manifest file so you are ready to rock.
 
-To run the dev environment start: 
+To run the dev environment start:
 
 `npm run dev`
 
