@@ -26,13 +26,13 @@ Then run NPM:
 
 `npm i`
 
-**Make sure you update the Vite settings in the .env file - using the .env.example.dev as a guide.**
-
 ## Create your local database and then run...
 
 `php craft setup`
 
-Add all the details you require:
+Add all the details you require.
+
+**Make sure you update the Vite settings in the .env file - using the .env.example.dev as a guide.**
 
 After that has finished run:
 
