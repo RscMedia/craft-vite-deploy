@@ -1,0 +1,24 @@
+name: Remote Server Git Pull
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.TEST_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H boldstmedia.com  >> ~/.ssh/known_hosts
+
+    - name: Git pull on remote server
+      run: ssh -i ~/.ssh/id_rsa boldstme@boldstmedia.com  'touch rob.text'
