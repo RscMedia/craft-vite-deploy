@@ -6,7 +6,7 @@ return [
     'useDevServer' => App::env('ENVIRONMENT') === 'dev' || App::env('CRAFT_ENVIRONMENT') === 'dev',
     'manifestPath' => '@webroot/dist/.vite/manifest.json',
     'devServerPublic' => 'https://'.App::env('VITE_SITE_URL').':5173/',
-    'serverPublic' => App::env('PRIMARY_SITE_URL') . 'dist/',
+    'serverPublic' => '/dist/',
     'errorEntry' => '',
     'cacheKeySuffix' => '',
     'devServerInternal' => '',
