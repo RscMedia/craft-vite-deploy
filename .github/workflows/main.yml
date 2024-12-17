@@ -17,9 +17,10 @@ jobs:
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.TEST_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.TEST_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H boldstmedia.com  >> ~/.ssh/known_hosts
+        cat ~/.ssh/id_rsa
 
     - name: Git pull on remote server
       run: ssh -i ~/.ssh/id_rsa boldstme@boldstmedia.com  'touch rob.text'
