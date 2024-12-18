@@ -17,12 +17,12 @@ jobs:
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.TEST_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        echo "${{ secrets.TEST_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H boldstmedia.com >> ~/.ssh/known_hosts || (echo "Host key addition failed" && exit 1)
         ls -la ~/.ssh
-        head -n 5 ~/.ssh/id_rsa # Ensure private key structure
+        head -n 5 ~/.ssh/id_ed25519 # Ensure private key structure
         cat ~/.ssh/known_hosts # Confirm host key added
 
     - name: Git pull on remote server
-      run: ssh -i ~/.ssh/id_rsa boldstme@boldstmedia.com  'touch rob.text'
+      run: ssh -i ~/.ssh/id_ed25519 boldstme@boldstmedia.com  'touch rob.text'
