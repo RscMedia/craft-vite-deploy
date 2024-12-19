@@ -11,7 +11,7 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: bolstmedia.com
+          host: 185.219.239.3
           username: boldstme
           password: ${{ secrets.PASS }}
           port: ${{ secrets.PORT }}
