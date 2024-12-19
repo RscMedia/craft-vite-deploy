@@ -1,28 +1,18 @@
 name: Remote Server Git Pull
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  update-server:
+  build:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.BOLD_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
-        chmod 600 ~/.ssh/id_ed25519
-        ssh-keyscan -H boldstmedia.com >> ~/.ssh/known_hosts || (echo "Host key addition failed" && exit 1)
-        ls -la ~/.ssh
-        head -n 5 ~/.ssh/id_ed25519 # Ensure private key structure
-        cat ~/.ssh/known_hosts # Confirm host key added
-
-    - name: Git pull on remote server
-      run: ssh -i ~/.ssh/id_ed25519 boldstme@boldstmedia.com  'touch rob.text'
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: bolstmedia.com
+          username: boldstme
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
