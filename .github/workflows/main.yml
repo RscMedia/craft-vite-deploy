@@ -15,4 +15,5 @@ jobs:
           username: boldstme
           password: ${{ secrets.PASS }}
           port: ${{ secrets.PORT }}
+          key: ${{ secrets.BOLD_KEY }}
           script: whoami
