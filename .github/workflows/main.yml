@@ -13,6 +13,6 @@ jobs:
         with:
           host: bolstmedia.com
           username: boldstme
-          password: ${{ secrets.PASSWORD }}
+          password: ${{ secrets.PASS }}
           port: ${{ secrets.PORT }}
           script: whoami
